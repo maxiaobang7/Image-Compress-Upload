@@ -1,0 +1,108 @@
+/* Image Compress Upload — compress-upload.css */
+
+/* 说明文字 */
+.icu-hint {
+    font-size: 12px;
+    color: #757575;
+    margin: 0 0 12px;
+    line-height: 1.5;
+}
+.icu-hint-link {
+    color: #0073aa;
+    text-decoration: none;
+    margin-left: 2px;
+}
+.icu-hint-link:hover {
+    text-decoration: underline;
+}
+
+/* 质量滑块间距 */
+.icu-quality-slider {
+    margin-bottom: 12px !important;
+}
+.icu-quality-slider .components-base-control__help {
+    font-size: 11px;
+    color: #757575;
+    margin-top: 4px;
+}
+
+/* 主上传按钮：撑满面板宽度 */
+.icu-upload-btn.components-button {
+    width: 100%;
+    justify-content: center;
+    gap: 6px;
+}
+
+/* Notice 间距 */
+.icu-notice.components-notice {
+    margin: 12px 0 0;
+    padding: 8px 12px;
+}
+.icu-notice .components-notice__content {
+    font-size: 12px;
+    margin: 0;
+}
+
+/* 预览图 */
+.icu-preview {
+    margin-top: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #f9f9f9;
+}
+.icu-preview__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+}
+
+/* 压缩前后体积对比 */
+.icu-size-info {
+    margin: 10px 0 4px;
+    background: #f0f7f0;
+    border: 1px solid #b8ddb8;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 12px;
+}
+.icu-size-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 0;
+}
+.icu-size-row--saved {
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: 1px dashed #b8ddb8;
+}
+.icu-size-label {
+    color: #555;
+    flex-shrink: 0;
+    margin-right: 8px;
+}
+.icu-size-val {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+.icu-size-val--before {
+    color: #b45309;
+}
+.icu-size-val--after {
+    color: #2e7d32;
+}
+.icu-size-val--saved {
+    color: #1565c0;
+}
+.icu-size-ratio {
+    font-style: normal;
+    font-size: 11px;
+    background: #1565c0;
+    color: #fff;
+    border-radius: 3px;
+    padding: 1px 4px;
+    margin-left: 4px;
+}

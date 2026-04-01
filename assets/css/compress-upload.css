@@ -1,39 +1,127 @@
-/* Image Compress Upload — compress-upload.css */
+/* WP Image Compress Upload — compress-upload.css v1.2.0 */
 
-/* 说明文字 */
+/* ── 说明文字 ─────────────────────────────────────────────────────── */
 .icu-hint {
     font-size: 12px;
-    color: #757575;
+    color: var(--color-text-secondary, #757575);
     margin: 0 0 12px;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 .icu-hint-link {
-    color: #0073aa;
+    color: var(--color-text-info, #0073aa);
     text-decoration: none;
     margin-left: 2px;
 }
-.icu-hint-link:hover {
-    text-decoration: underline;
-}
+.icu-hint-link:hover { text-decoration: underline; }
 
-/* 质量滑块间距 */
-.icu-quality-slider {
-    margin-bottom: 12px !important;
-}
+/* ── 质量滑块 ─────────────────────────────────────────────────────── */
+.icu-quality-slider { margin-bottom: 14px !important; }
 .icu-quality-slider .components-base-control__help {
     font-size: 11px;
-    color: #757575;
+    color: var(--color-text-secondary, #757575);
     margin-top: 4px;
 }
 
-/* 主上传按钮：撑满面板宽度 */
-.icu-upload-btn.components-button {
-    width: 100%;
+/* ── 拖拽 / 点击上传区域 ─────────────────────────────────────────── */
+.icu-drop-zone {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 4px;
+    min-height: 120px;
+    padding: 20px 16px;
+    border: 1.5px dashed var(--color-border-secondary, #ccc);
+    border-radius: 8px;
+    background: var(--color-background-secondary, #f9f9f9);
+    cursor: pointer;
+    transition: border-color 0.18s, background 0.18s;
+    user-select: none;
+    text-align: center;
+}
+.icu-drop-zone:hover:not(.icu-drop-zone--busy) {
+    border-color: var(--color-text-info, #0073aa);
+    background: var(--color-background-info, #f0f7ff);
+}
+.icu-drop-zone--over {
+    border-color: var(--color-text-info, #0073aa);
+    border-style: solid;
+    background: var(--color-background-info, #e8f3ff);
+}
+.icu-drop-zone--busy {
+    cursor: default;
+    opacity: 0.75;
 }
 
-/* Notice 间距 */
+/* 上传区：中心图标（纯 CSS 箭头） */
+.icu-drop-zone__icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 2px;
+    position: relative;
+    flex-shrink: 0;
+}
+.icu-drop-zone__icon::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 10px solid var(--color-text-info, #0073aa);
+}
+.icu-drop-zone__icon::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 13px;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 14px;
+    background: var(--color-text-info, #0073aa);
+    border-radius: 0 0 2px 2px;
+}
+
+/* 主文字 */
+.icu-drop-zone__primary {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary, #1e1e1e);
+    line-height: 1.4;
+}
+/* 副文字 */
+.icu-drop-zone__secondary {
+    margin: 0;
+    font-size: 11px;
+    color: var(--color-text-secondary, #757575);
+    line-height: 1.4;
+}
+/* 格式标签 */
+.icu-drop-zone__formats {
+    margin: 4px 0 0;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--color-text-tertiary, #aaa);
+    line-height: 1;
+}
+
+/* 处理中状态 */
+.icu-drop-zone__busy {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.icu-drop-zone__busy-text {
+    font-size: 12px;
+    color: var(--color-text-secondary, #757575);
+}
+
+/* ── Notice 间距 ──────────────────────────────────────────────────── */
 .icu-notice.components-notice {
     margin: 12px 0 0;
     padding: 8px 12px;
@@ -43,13 +131,13 @@
     margin: 0;
 }
 
-/* 预览图 */
+/* ── 预览图 ───────────────────────────────────────────────────────── */
 .icu-preview {
     margin-top: 12px;
-    border: 1px solid #e0e0e0;
-    border-radius: 4px;
+    border: 1px solid var(--color-border-tertiary, #e0e0e0);
+    border-radius: 6px;
     overflow: hidden;
-    background: #f9f9f9;
+    background: var(--color-background-secondary, #f9f9f9);
 }
 .icu-preview__img {
     display: block;
@@ -59,12 +147,12 @@
     object-fit: contain;
 }
 
-/* 压缩前后体积对比 */
+/* ── 体积对比 ─────────────────────────────────────────────────────── */
 .icu-size-info {
     margin: 10px 0 4px;
     background: #f0f7f0;
     border: 1px solid #b8ddb8;
-    border-radius: 4px;
+    border-radius: 6px;
     padding: 8px 12px;
     font-size: 12px;
 }
@@ -80,29 +168,20 @@
     border-top: 1px dashed #b8ddb8;
 }
 .icu-size-label {
-    color: #555;
+    color: var(--color-text-secondary, #555);
     flex-shrink: 0;
     margin-right: 8px;
 }
-.icu-size-val {
-    font-weight: 600;
-    font-variant-numeric: tabular-nums;
-}
-.icu-size-val--before {
-    color: #b45309;
-}
-.icu-size-val--after {
-    color: #2e7d32;
-}
-.icu-size-val--saved {
-    color: #1565c0;
-}
+.icu-size-val { font-weight: 600; font-variant-numeric: tabular-nums; }
+.icu-size-val--before { color: #b45309; }
+.icu-size-val--after  { color: #2e7d32; }
+.icu-size-val--saved  { color: #1565c0; }
 .icu-size-ratio {
     font-style: normal;
     font-size: 11px;
     background: #1565c0;
     color: #fff;
     border-radius: 3px;
-    padding: 1px 4px;
+    padding: 1px 5px;
     margin-left: 4px;
 }
